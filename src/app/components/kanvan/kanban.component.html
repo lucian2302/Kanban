@@ -1,0 +1,90 @@
+<div cdkDropListGroup class="container1">
+    <form (submit)="add()" class="mb-1 mt-1 mb-3 bg-dark">
+        <input type="text" [(ngModel)]="descripcionimput" [ngModelOptions]="{standalone: true}" placeholder="descripcion" class="ml-1 mr-1">
+        <input type="text" [(ngModel)]="nombreimput" [ngModelOptions]="{standalone: true}" placeholder="nombre" class="ml-1 mr-1">
+
+        <button type="submit" class="btn btn-primary ml-1 mr-1 mb-1 mt-1">Añadir Tarea</button>
+    </form>
+
+
+    <div class="row">
+
+        <div class="col-md-3 no-float">
+            <div id="principal" class="card text-warning bg-light border border-warning mb-3 " cdkDropList [cdkDropListData]="preinbox " cdkDropListConnectedTo="inbox " (cdkDropListDropped)="drop($event) ">
+                <div class="card-header ">Preinbox </div>
+                <div class="card-body">
+                    <div *ngFor="let tarea of preinbox " class="card border border-warning bg-light text-warning " style="margin: 10px; " cdkDrag>
+                        <div class="card-header "> <img [src]="urlplaceholder" class="rounded mr-1" id="userimg">{{tarea.personal}}</div>
+                        <div class="card-body pb-0">{{tarea.descripcion}}
+                            <hr class="style1">
+                            <div class="row mb-0">
+                                <div *ngFor="let tag of tarea.tags" class="col-sm-auto">
+                                    <p class="text-center bg-warning text-light rounded pr-3 pl-3">{{tag}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3 no-float ">
+            <div class="card text-primary bg-light border border-primary mb-3 scrollbar scrollbar-primary" id="principal" cdkDropList [cdkDropListData]="inbox " cdkDropListConnectedTo="iniciadas " (cdkDropListDropped)="drop($event) ">
+                <div class="card-header ">Inbox</div>
+                <div class="card-body">
+                    <div *ngFor="let tarea of inbox " class="card border-right border-primary " style="margin: 10px; " cdkDrag>
+                        <div class="card-header "> <img [src]="urlplaceholder" class="rounded mr-1" id="userimg">{{tarea.personal}}</div>
+                        <div class="card-body pb-0">{{tarea.descripcion}}
+                            <hr class="style1">
+                            <div class="row mb-0">
+                                <div *ngFor="let tag of tarea.tags" class="col-sm-auto">
+                                    <p class="text-center bg-primary text-light rounded pr-3 pl-3">{{tag}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 no-float ">
+            <div id="principal" class="card text-success bg-light border border-success mb-3 " cdkDropList [cdkDropListData]="iniciadas " cdkDropListConnectedTo="finalizadas " (cdkDropListDropped)="drop($event) ">
+                <div class="card-header ">Iniciadas</div>
+                <div class="card-body">
+                    <div *ngFor="let tarea of iniciadas " class="card border border-success bg-light text-success " style="margin: 10px; " cdkDrag>
+                        <div class="card-header "> <img [src]="urlplaceholder" class="rounded mr-1" id="userimg">{{tarea.personal}}</div>
+                        <div class="card-body pb-0">{{tarea.descripcion}}
+                            <hr class="style1">
+                            <div class="row mb-0">
+                                <div *ngFor="let tag of tarea.tags" class="col-sm-auto">
+                                    <p class="text-center bg-success text-light rounded pr-3 pl-3">{{tag}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 no-float ">
+            <div id="principal" class="card text-danger bg-light border border-danger mb-3 " cdkDropList [cdkDropListData]="finalizadas " cdkDropListConnectedTo="finalizadas " (cdkDropListDropped)="drop($event) ">
+                <div class="card-header ">Finalizadas</div>
+                <div class="card-body">
+                    <div *ngFor="let tarea of finalizadas " class="card border border-danger bg-light text-danger " style="margin: 10px; " cdkDrag>
+                        <div class="card-header "> <img [src]="urlplaceholder" class="rounded mr-1" id="userimg">{{tarea.personal}}</div>
+                        <div class="card-body pb-0">{{tarea.descripcion}}
+                            <hr class="style1">
+                            <div class="row mb-0">
+                                <div *ngFor="let tag of tarea.tags" class="col-sm-auto">
+                                    <p class="text-center bg-danger text-light rounded pr-3 pl-3">{{tag}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
